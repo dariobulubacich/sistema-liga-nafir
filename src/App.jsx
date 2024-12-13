@@ -1,30 +1,23 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Auth from "./pages/auth/Auth";
-import Home from "./components/pages/Home";
-import Login from "./components/pages/Login";
-import Dashboard from "./components/pages/Dashboard";
-import Navbar from "./components/layout/Navbar";
-import AuthContextProvider from "./context/AuthContext";
-import ProtectedRoutes from "./ProtectedRoutes";
-import AgregarJugadores from "./components/pages/AgregarJugadores";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "../src/components/pages/Login";
+import UserDashboard from "../src/components/pages/UserDashboard";
+import AdminDashboard from "./components/pages/admindashboard/AdminDashboard";
+import AgregarJugadores from "./components/pages/agregarjugadores/AgregarJugadores";
+import CargaJugadores from "./components/pages/cargajugadores/CargaJugadores";
+import ListarJugadores from "./components/pages/listarjugadores/ListarJugadores";
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthContextProvider>
-        <Routes>
-          <Route path="/" element={<Auth />} />
-          <Route element={<Navbar />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-          </Route>
-
-          <Route element={<ProtectedRoutes />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/AgregarJugadores" element={<AgregarJugadores />} />
-          </Route>
-        </Routes>
-      </AuthContextProvider>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/Agregarjugadores" element={<AgregarJugadores />} />{" "}
+        <Route path="/CargaJugadores" element={<CargaJugadores />} />{" "}
+        <Route path="/ListarJugadores" element={<ListarJugadores />} />{" "}
+        {/* Nueva ruta */}
+      </Routes>
     </BrowserRouter>
   );
 }
